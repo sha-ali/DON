@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".FullscreenActivity">
+    <TextView
+        android:id="@+id/marconni"
+        android:layout_centerInParent="true"
+        android:text="Welcome to the show"
+        android:textColor="@android:color/white"
+        android:layout_width="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/marconni2"
+        android:layout_centerInParent="true"
+        android:text=""
+        android:textColor="@android:color/white"
+        android:layout_width="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/donaldtrump"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="39dp"
+        android:text="+"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="40dp"
+        android:layout_marginRight="39dp"
+        android:layout_marginBottom="55dp"
+        android:background="@drawable/button" />
+
+    <Button
+        android:id="@+id/martinlutharking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="29dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginBottom="61dp"
+        android:background="@drawable/button"
+        android:text="cancel"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/kattabomma"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="314dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="132dp"
+        android:background="@mipmap/ic_timer_round"
+        android:backgroundTintMode="src_in"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/rajaravivarmma"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="316dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="206dp"
+        android:background="@mipmap/ic_count_round"
+        android:backgroundTintMode="src_in"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30dp" />
+</RelativeLayout>

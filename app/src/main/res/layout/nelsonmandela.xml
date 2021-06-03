@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/victoriya"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:hint="what are you waiting for"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:gravity="center"
+        android:textStyle="italic"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="right"
+        android:id="@+id/chegura"
+        android:layout_width="wrap_content"
+        android:text="submit"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button1"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
