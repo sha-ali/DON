@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
     <EditText
-        android:id="@+id/victoriya"
+        android:id="@+id/texteventnameone"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:hint="what are you waiting for"
@@ -18,7 +18,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginRight="20dp"
         android:layout_gravity="right"
-        android:id="@+id/chegura"
+        android:id="@+id/buttoneventsubmit"
         android:layout_width="wrap_content"
         android:text="submit"
         android:textColor="@android:color/white"

@@ -50,28 +50,35 @@ class FullscreenActivity : AppCompatActivity() {
 
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        martinlutharking.visibility = View.GONE
+        buttoncancelevent.visibility = View.GONE
 
-        donaldtrump.setOnClickListener {
-            //hilari()
+        buttoneventcounterstart.setOnClickListener {
+
             kattabomma.visibility = View.GONE
             rajaravivarmma.visibility = View.GONE
 
-            marconni2.text = ""
-            marconni.text = ""
-            modi()
+            texteventname.text = ""
+            texthour.text = ""
+            textminuts.text = ""
+            textsecond.text = ""
+
+            daypickingfunction()
         }
-        martinlutharking.setOnClickListener {
+        buttoncancelevent.setOnClickListener {
             val mp = MediaPlayer.create(this,R.raw.wickedmalelaugh1)
+
             mp.start()
-            marconni.text = ""
-            marconni2.text = "Welcome back"
+
+            texthour.text = ""
+            textminuts.text = ""
+            textsecond.text = ""
+            texteventname.text = "Welcome back"
+
             handler.removeMessages(0)
-            donaldtrump.visibility = View.VISIBLE
+            buttoneventcounterstart.visibility = View.VISIBLE
             kattabomma.visibility = View.VISIBLE
             rajaravivarmma.visibility = View.VISIBLE
-
-            martinlutharking.visibility = View.GONE
+            buttoncancelevent.visibility = View.GONE
 
         }
         kattabomma.setOnClickListener {
@@ -84,19 +91,21 @@ class FullscreenActivity : AppCompatActivity() {
         }
 
     }
-    private  fun modi(){
+    private  fun daypickingfunction(){
+        //picking date with date picking funtion
         val yeardate = Calendar.getInstance()
         val datepicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{
             view, year, month, dayOfMonth ->
             yearof = year
             monthof = month
             dayof = dayOfMonth
-            manmohan()
+            hourpickingfunction()
         },yeardate[Calendar.YEAR],yeardate[Calendar.MONTH],yeardate[Calendar.DAY_OF_MONTH])
         datepicker.show()
 
     }
-    private fun manmohan(){
+    private fun hourpickingfunction(){
+        //picking hour and minuts with time picker dilog
         val yeardate = Calendar.getInstance()
         val dayss = TimePickerDialog.OnTimeSetListener { timepicker, hourOfDay, minute ->
             yeardate.set(Calendar.HOUR,hourOfDay)
@@ -110,27 +119,27 @@ class FullscreenActivity : AppCompatActivity() {
             }else{
                 ampmof = 1
             }
-            obama()
-            //hilari()
+            alertdilogfunction()
         }
         TimePickerDialog(this, dayss, yeardate.get(Calendar.HOUR), yeardate.get(Calendar.MINUTE),false).show()
     }
-    private fun obama(){
+    private fun alertdilogfunction(){
+        //set event name in alert dilog box
         val mDialogView = LayoutInflater.from(this).inflate(R.layout.nelsonmandela, null)
         val mBuilder = AlertDialog.Builder(this)
             .setView(mDialogView)
             .setTitle("Content")
         val mAlertDialog = mBuilder.show()
-        mDialogView.chegura.setOnClickListener {
+        mDialogView.buttoneventsubmit.setOnClickListener {
             mAlertDialog.dismiss()
-            eventname = mDialogView.victoriya.text.toString()
-            hilari()
+            eventname = mDialogView.texteventnameone.text.toString()
+            eventtimerstartingfunction()
 
         }
     }
-    private fun hilari(){
-        martinlutharking.visibility = View.VISIBLE
-        donaldtrump.visibility = View.GONE
+    private fun eventtimerstartingfunction(){
+        buttoncancelevent.visibility = View.VISIBLE
+        buttoneventcounterstart.visibility = View.GONE
         handler.post(object : Runnable{
             override fun run() {
                 handler.postDelayed(this, 1000)
@@ -148,33 +157,36 @@ class FullscreenActivity : AppCompatActivity() {
         eventdate[Calendar.DAY_OF_MONTH] = dayof!!
         eventdate[Calendar.HOUR] = hourof!!
         eventdate[Calendar.MINUTE] = minutsof!!
-        eventdate[Calendar.AM_PM] = ampmof!!
         eventdate[Calendar.SECOND] = 0
+        eventdate[Calendar.AM_PM] = ampmof!!
         Log.i("tag","------------->$ampmof")
-        //eventdate.timeZone = TimeZone.getTimeZone("GMT+0:15")
         val diff = eventdate.timeInMillis - currentdate.timeInMillis
         //Log.i("tag diff","$diff")
         if (diff<0){
             Toast.makeText(this, "use futer date", Toast.LENGTH_SHORT).show()
             endEvent(currentdate, eventdate) }
 
-        val days = diff/(24*60*60*1000)
-        val hours = diff/(1000*60*60)%24
+        //val days = diff/(24*60*60*1000)
+        val hours = diff/(1000*60*60)
+        //val hours = diff/(1000*60*60)%24
         val minuts = diff/(1000*60)%60
         val seconds = (diff/1000)%60
         val milisecond:Long = (diff%100)
-        if (days==0.toLong() && hours==0.toLong() && minuts==0.toLong() && seconds<=10) {
+        if (hours==0.toLong() && minuts==0.toLong() && seconds<=10) {
             val animationzoomout = AnimationUtils.loadAnimation(this, R.anim.zoominanim)
-            marconni.startAnimation(animationzoomout)
-            marconni.setTextColor(Color.RED)
+            textsecond.startAnimation(animationzoomout)
+            textsecond.setTextColor(Color.RED)
             val mp = MediaPlayer.create(this,R.raw.tick)
             mp.start()
-            marconni.text = "$seconds"
+            textsecond.text = "$seconds"
 
         }
         else{
-            marconni.text = "${days}d ${hours}h ${minuts}m ${seconds}s"
-            marconni.clearAnimation()
+            //marconni.text = "${days}d ${hours}h ${minuts}m ${seconds}s"
+            texthour.text = "$hours"
+            textminuts.text = "$minuts"
+            textsecond.text = "$seconds"
+            textsecond.clearAnimation()
         }
         endEvent(currentdate, eventdate)
     }
@@ -183,14 +195,18 @@ class FullscreenActivity : AppCompatActivity() {
             Log.i("taagggg","function working")
             val mp = MediaPlayer.create(this,R.raw.wickedmalelaugh1)
             mp.start()
-            marconni.setTextColor(Color.WHITE)
-            marconni.text = ""
-            marconni2.text = eventname
+            textsecond.setTextColor(Color.WHITE)
+            texthour.text = ""
+            textminuts.text = ""
+            textsecond.text = ""
+
+
+            texteventname.text = eventname
             shabeeb()
             //Stop Handler
             handler.removeMessages(0)
-            donaldtrump.visibility = View.VISIBLE
-            martinlutharking.visibility = View.GONE
+            buttoneventcounterstart.visibility = View.VISIBLE
+            buttoncancelevent.visibility = View.GONE
             kattabomma.visibility = View.VISIBLE
         }
     }

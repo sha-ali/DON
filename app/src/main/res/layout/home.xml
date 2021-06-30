@@ -4,8 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/gradiant"
     tools:visibility="visible">
+
+    <ImageButton
+        android:background="@mipmap/ic_timer"
+        android:id="@+id/buttoneventcounter"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_above="@+id/press"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="215dp"
+        android:layout_marginBottom="110dp" />
+
     <Button
         android:id="@+id/press"
         android:layout_width="wrap_content"
