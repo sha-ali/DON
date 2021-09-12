@@ -8,23 +8,37 @@
     tools:visibility="visible">
 
     <ImageButton
-        android:background="@mipmap/ic_timer"
         android:id="@+id/buttoneventcounter"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_above="@+id/press"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
         android:layout_marginStart="45dp"
         android:layout_marginTop="100dp"
-        android:layout_marginEnd="215dp"
-        android:layout_marginBottom="110dp" />
+        android:layout_marginBottom="110dp"
+        android:background="@drawable/hourglassicon"
+        />
 
-    <Button
-        android:id="@+id/press"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="press"
-        android:layout_centerInParent="true"/>
+    <ImageButton
+        android:id="@+id/buttonstopwatch"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/buttoneventcounter"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_toEndOf="@+id/buttoneventcounter"
+        android:background="@mipmap/ic_timer" />
+
+    <ImageButton
+        android:id="@+id/buttoncounter"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@id/buttonstopwatch"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_toEndOf="@id/buttoncounter"
+        android:background="@drawable/plusone"/>
+
 </RelativeLayout>

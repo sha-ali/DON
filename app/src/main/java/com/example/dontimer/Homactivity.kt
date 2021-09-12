@@ -20,5 +20,10 @@ class Homactivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        buttoncounter.setOnClickListener {
+            intent = Intent(this,Counter::class.java)
+            startActivity(intent)
+        }
+
     }
 }

@@ -4,7 +4,7 @@
     android:background="@color/colorPrimaryDark"
     android:layout_height="match_parent">
     <TextView
-        android:id="@+id/herculis"
+        android:id="@+id/textcounting"
         android:layout_centerInParent="true"
         android:text="0000"
         android:textColor="@android:color/white"
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/monalisa"
+        android:id="@+id/buttonplusonecount"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentLeft="true"
@@ -28,7 +28,7 @@
         android:textSize="30dp" />
 
     <Button
-        android:id="@+id/davinchi"
+        android:id="@+id/buttonreset"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentLeft="true"

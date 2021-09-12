@@ -12,7 +12,7 @@ class Counter: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.count)
-        monalisa.setOnClickListener {
+        buttonplusonecount.setOnClickListener {
             count = this.count!!.plus(1)
             if(count.toString().length ==1){
                  counterr = "000${count.toString()}"
@@ -25,13 +25,13 @@ class Counter: AppCompatActivity() {
             }else{
                 counterr = count.toString()
             }
-            herculis.text = counterr
+            textcounting.text = counterr
 
         }
-        davinchi.setOnClickListener {
+        buttonreset.setOnClickListener {
             count = 0
             counterr = "000${count.toString()}"
-            herculis.text = counterr
+            textcounting.text = counterr
         }
     }
 }

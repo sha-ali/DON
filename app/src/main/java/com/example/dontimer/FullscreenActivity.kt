@@ -19,7 +19,7 @@ import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_fullscreen.*
-import kotlinx.android.synthetic.main.nelsonmandela.view.*
+import kotlinx.android.synthetic.main.datetimedailog.view.*
 import java.util.*
 
 /**
@@ -51,11 +51,14 @@ class FullscreenActivity : AppCompatActivity() {
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         buttoncancelevent.visibility = View.GONE
+        texteventname.visibility = View.GONE
+        texthour.visibility = View.GONE
+        textminuts.visibility = View.GONE
+        textsecond.visibility = View.GONE
 
         buttoneventcounterstart.setOnClickListener {
 
             kattabomma.visibility = View.GONE
-            rajaravivarmma.visibility = View.GONE
 
             texteventname.text = ""
             texthour.text = ""
@@ -77,22 +80,18 @@ class FullscreenActivity : AppCompatActivity() {
             handler.removeMessages(0)
             buttoneventcounterstart.visibility = View.VISIBLE
             kattabomma.visibility = View.VISIBLE
-            rajaravivarmma.visibility = View.VISIBLE
             buttoncancelevent.visibility = View.GONE
 
         }
+
         kattabomma.setOnClickListener {
             intent = Intent(this,TImer::class.java)
-            startActivity(intent)
-        }
-        rajaravivarmma.setOnClickListener {
-            intent = Intent(this, Counter::class.java)
             startActivity(intent)
         }
 
     }
     private  fun daypickingfunction(){
-        //picking date with date picking funtion
+        /** picking date with date picking funtion */
         val yeardate = Calendar.getInstance()
         val datepicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{
             view, year, month, dayOfMonth ->
@@ -105,7 +104,7 @@ class FullscreenActivity : AppCompatActivity() {
 
     }
     private fun hourpickingfunction(){
-        //picking hour and minuts with time picker dilog
+        /** picking hour and minuts with time picker dilog */
         val yeardate = Calendar.getInstance()
         val dayss = TimePickerDialog.OnTimeSetListener { timepicker, hourOfDay, minute ->
             yeardate.set(Calendar.HOUR,hourOfDay)
@@ -114,7 +113,6 @@ class FullscreenActivity : AppCompatActivity() {
             minutsof = minute
             if (Calendar.AM == 0){
                 ampmof = 0
-                Log.i("amptag","--------------@##$ampmof")
 
             }else{
                 ampmof = 1
@@ -124,8 +122,8 @@ class FullscreenActivity : AppCompatActivity() {
         TimePickerDialog(this, dayss, yeardate.get(Calendar.HOUR), yeardate.get(Calendar.MINUTE),false).show()
     }
     private fun alertdilogfunction(){
-        //set event name in alert dilog box
-        val mDialogView = LayoutInflater.from(this).inflate(R.layout.nelsonmandela, null)
+        /** set event name in alert dilog box */
+        val mDialogView = LayoutInflater.from(this).inflate(R.layout.datetimedailog, null)
         val mBuilder = AlertDialog.Builder(this)
             .setView(mDialogView)
             .setTitle("Content")
@@ -138,8 +136,13 @@ class FullscreenActivity : AppCompatActivity() {
         }
     }
     private fun eventtimerstartingfunction(){
+
         buttoncancelevent.visibility = View.VISIBLE
         buttoneventcounterstart.visibility = View.GONE
+        texthour.visibility = View.VISIBLE
+        textminuts.visibility = View.VISIBLE
+        textsecond.visibility = View.VISIBLE
+
         handler.post(object : Runnable{
             override fun run() {
                 handler.postDelayed(this, 1000)
@@ -159,11 +162,11 @@ class FullscreenActivity : AppCompatActivity() {
         eventdate[Calendar.MINUTE] = minutsof!!
         eventdate[Calendar.SECOND] = 0
         eventdate[Calendar.AM_PM] = ampmof!!
-        Log.i("tag","------------->$ampmof")
+
         val diff = eventdate.timeInMillis - currentdate.timeInMillis
         //Log.i("tag diff","$diff")
         if (diff<0){
-            Toast.makeText(this, "use futer date", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "use future date", Toast.LENGTH_SHORT).show()
             endEvent(currentdate, eventdate) }
 
         //val days = diff/(24*60*60*1000)
@@ -172,6 +175,7 @@ class FullscreenActivity : AppCompatActivity() {
         val minuts = diff/(1000*60)%60
         val seconds = (diff/1000)%60
         val milisecond:Long = (diff%100)
+
         if (hours==0.toLong() && minuts==0.toLong() && seconds<=10) {
             val animationzoomout = AnimationUtils.loadAnimation(this, R.anim.zoominanim)
             textsecond.startAnimation(animationzoomout)
@@ -191,26 +195,31 @@ class FullscreenActivity : AppCompatActivity() {
         endEvent(currentdate, eventdate)
     }
     private fun endEvent(currentdate: Calendar, eventdate: Calendar) {
+
         if (currentdate.time >= eventdate.time) {
-            Log.i("taagggg","function working")
+            //Log.i("taagggg","function working")
             val mp = MediaPlayer.create(this,R.raw.wickedmalelaugh1)
             mp.start()
-            textsecond.setTextColor(Color.WHITE)
+            //textsecond.setTextColor(Color.WHITE)
             texthour.text = ""
             textminuts.text = ""
             textsecond.text = ""
 
-
             texteventname.text = eventname
-            shabeeb()
+            notificationfunction()
             //Stop Handler
+
             handler.removeMessages(0)
+
             buttoneventcounterstart.visibility = View.VISIBLE
             buttoncancelevent.visibility = View.GONE
+            texthour.visibility = View.GONE
+            textminuts.visibility = View.GONE
+            textsecond.visibility = View.GONE
             kattabomma.visibility = View.VISIBLE
         }
     }
-    private fun shabeeb(){
+    private fun notificationfunction(){
         val intent = Intent(this, LauncherActivity::class.java)
         val pendingIntent= PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
